@@ -137,12 +137,12 @@ jobs:
               under the following path <code>Trio/fastlane/testflight.md</code>." >> $GITHUB_STEP_SUMMARY
 
       # Set a logic flag if this is the second instance of this day-of-week in this month
-      - name: Check if this is the second time this day-of-week happens this month
+            - name: Check if today is the second Sunday of the month
         id: date-check
         run: |
-          DAY_OF_MONTH=$(date +%-d)
-          WEEK_OF_MONTH=$(( ($(date +%-d) - 1) / 7 + 1 ))
-          if [[ $WEEK_OF_MONTH -eq 2 ]]; then
+          DAY_OF_MONTH=$(date -u +%-d)
+          DAY_OF_WEEK=$(date -u +%u)
+          if [[ $DAY_OF_MONTH -ge 8 && $DAY_OF_MONTH -le 14 && $DAY_OF_WEEK -eq 7 ]]; then
             echo "is_second_instance=true" >> "$GITHUB_OUTPUT"
           else
             echo "is_second_instance=false" >> "$GITHUB_OUTPUT"
