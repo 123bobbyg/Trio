@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   schedule:
     # Check for updates every day
-   #   Later logic builds if there are updates or if it is the 2nd Sunday of the month
+    # Later logic builds if there are updates or if it is the 2nd Sunday of the month
     - cron: "43 6 * * *" # Daily at UTC 06:43
 
 env:
